@@ -52,5 +52,9 @@ jobs:
     steps:
       - name: Deploy Heroku
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
+            HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+
+      # Enviando o código da App para o Heroku fazer Deploy
+      - name: Push to Heroku & Deploy
+        run: git push heroku HEAD:main --force
+        
